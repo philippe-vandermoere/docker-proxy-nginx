@@ -1,4 +1,4 @@
-FROM nginx:1.16.0-alpine
+FROM nginx:1.16.1-alpine
 
 LABEL maintainer="Philippe VANDERMOERE <philippe@wizacha.com"
 
