@@ -1,10 +1,13 @@
 FROM nginx:1.16.1-alpine
 
-LABEL maintainer="Philippe VANDERMOERE <philippe@wizacha.com"
+ARG BUILD_DATE
+ARG VCS_REF
 
-RUN set -xe; \
-    apk add openssl; \
-    openssl dhparam -out /etc/nginx/dhparam.pem 2048; \
-    rm -f /etc/nginx/conf.d/*;
+LABEL maintainer="Philippe VANDERMOERE <philippe@wizacha.com" \
+    org.label-schema.build-date=${BUILD_DATE} \
+    org.label-schema.name="docker-proxy-php" \
+    org.label-schema.vcs-ref=${VCS_REF} \
+    org.label-schema.vcs-url="https://github.com/philippe-vandermoere/docker-proxy-php" \
+    org.label-schema.schema-version="1.0.0"
 
 COPY ./config/*.conf /etc/nginx/
